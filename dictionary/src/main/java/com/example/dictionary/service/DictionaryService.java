@@ -57,7 +57,9 @@ public class DictionaryService {
                         break;
                     }
                 }
+
                     return duplicateConsecutiveLetters;
+
                 })
                 .sorted(Map.Entry.comparingByKey(Comparator.naturalOrder()))
                 .map(entry -> new Entry(entry.getKey(), entry.getValue()))
