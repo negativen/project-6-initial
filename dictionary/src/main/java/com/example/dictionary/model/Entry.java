@@ -1,34 +1,44 @@
 package com.example.dictionary.model;
 
 public class Entry {
-    private String {
-        this.
-    }
-    public Entry(String word, String definition) {
 
-    }
+    private String word;
+    private String definition;
 
     public Entry() {
-        super();
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+    public Entry(String word, String definition) {
+        this.word = word;
+        this.definition = definition;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public String getWord() {
+        return word;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        final StringBuilder sb = new StringBuilder("Entry {");
+        sb.append("word='")
+                .append(word)
+                .append('\'');
+        sb.append(", definition='")
+                .append(definition)
+                .append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
