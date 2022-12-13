@@ -84,6 +84,51 @@ public class DictionaryController {
                 .append(value)
                 .append("] in ")
                 .append(nanoSeconds / 1000000.0)
+                .append("ns")
+                .toString();
+        logger.info(message);
+
+        return entries;
+    }
+    @GetMapping("/getWordsThatContainConsecutiveLetters/{value}")
+    public List<Entry> getWordsThatContainConsecutiveLetters(@PathVariable String value) {
+
+        StopWatch sw = new StopWatch();
+        sw.start();
+        List<Entry> entries = this.dictionaryService.getWordsThatContainConsecutiveDoubleLetters();
+        sw.stop();
+
+        long nanoSeconds = sw.getLastTaskTimeNanos();
+
+        String message = new StringBuilder().append("Retrieved entries for words containing")
+                .append(" consecutive double letters ")
+                .append(" containing ")
+                .append(entries.size())
+                .append(" entries in ")
+                .append(nanoSeconds / 1000000.0)
+                .append("ns")
+                .toString();
+        logger.info(message);
+
+        return entries;
+    }
+
+    @GetMapping("/getWordsEndingWith/{value}")
+    public List<Entry> getWordsEndingWith(@PathVariable String value) {
+
+        StopWatch sw = new StopWatch();
+        sw.start();
+        List<Entry> entries = this.dictionaryService.getWordsEndingWith(value);
+        sw.stop();
+
+        long nanoSeconds = sw.getLastTaskTimeNanos();
+
+        String message = new StringBuilder().append("Retrieved ")
+                .append(entries.size())
+                .append(" entries for words ending with [")
+                .append(value)
+                .append("] in ")
+                .append(nanoSeconds / 1000000.0)
                 .append("ms")
                 .toString();
         logger.info(message);
